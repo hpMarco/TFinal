@@ -9,7 +9,8 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
-public class Raqueta2 {
+public class Raqueta2 
+{
 	private static final int z = 20;
 	private static final int WIDTH = 60;
 	private static final int HEIGHT = 10;
@@ -18,35 +19,42 @@ public class Raqueta2 {
         
 	private JuegoGrap game;
 
-	public Raqueta2(JuegoGrap game) {
+	public Raqueta2(JuegoGrap game) 
+        {
 		this.game = game;
 	}
 
-	public void move() {
+	public void move() 
+        {
 		if (x + xa > 0 && x + xa < game.getWidth() - WIDTH)
 			x = x + xa;
 	}
 
-	public void paint(Graphics2D g) {
+	public void paint(Graphics2D g) 
+        {
 		g.fillRect(x, z, WIDTH, HEIGHT);
 	}
 
-	public void keyReleased(KeyEvent e) {
+	public void keyReleased(KeyEvent e) 
+        {
 		xa = 0;
 	}
 
-	public void keyPressed(KeyEvent e) {
+	public void keyPressed(KeyEvent e) 
+        {
 		if (e.getKeyCode() == KeyEvent.VK_Q)
 			xa = -1;
 		if (e.getKeyCode() == KeyEvent.VK_E)
 			xa = 1;
 	}
 
-	public Rectangle getBounds() {
+	public Rectangle getBounds() 
+        {
 		return new Rectangle(x, z, WIDTH, HEIGHT);
 	}
 
-	public int getTopY() {
+	public int getTopY() 
+        {
 		return z;
 	}
 }

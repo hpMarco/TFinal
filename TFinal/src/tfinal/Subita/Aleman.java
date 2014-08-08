@@ -5,22 +5,28 @@ package tfinal.Subita;
  *
  * @author Lobo
  */
-public class Aleman implements Language,Language2{
+public class Aleman implements Language
+{
     
-    public String getPuntos(int points){
+    public String getPuntos(int points)
+    {
         String[] words={"LIEBE","FÜNZEHN","DREBIG","VIERZING"};
         return words[points];
     }
-    public String getDeuce(){
+    public String getDeuce()
+    {
         return "ZIEHEN";
     }
-    public String getAll(){
+    public String getAll()
+    {
         return "ALLE";
     }
-    public String getAdvantage(){
+    public String getAdvantage()
+    {
         return "SPIELER BEWEGT SICH ";
     }
-    public String getWin(){
+    public String getWin()
+    {
         return "SPIELER GEWINNT ";
     }
 

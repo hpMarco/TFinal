@@ -11,10 +11,11 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Lobo
  */
-public class Principal extends javax.swing.JFrame {
-    
+public class Principal extends javax.swing.JFrame 
+{ 
     JuegoGrap g;
-    public Principal() {
+    public Principal() 
+    {
         initComponents();
         this.setLocation(550, 100);
         jButton3.setVisible(true);
@@ -27,9 +28,8 @@ public class Principal extends javax.swing.JFrame {
         System.out.println("Jugador 2:"+ nombre2);
         jLabel2.setText(nombre);
         jLabel3.setText(nombre2);
-    }
+    } 
     
- 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -318,13 +318,15 @@ public class Principal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         player1++;
         muestraTabla1();
-     
     }//GEN-LAST:event_jButton1ActionPerformed
 
    public void PuntajeJugador1() {                                         
         player1++;
         if(player1<5)
         muestraTabla1();
+        if(player2>5)
+            //mostrarGanador();
+        JOptionPane.showMessageDialog(null, "El ganador es: "+ player1);
     
     }   
    
@@ -334,11 +336,18 @@ public class Principal extends javax.swing.JFrame {
          muestraTabla1();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    public void PuntajeJugador2() {                                         
+    public void PuntajeJugador2() 
+    {                                         
         player2++;
         if(player2<5)
          muestraTabla1();
-    }    
+        //if(player2>5)
+            //mostrarGanador();
+        //JOptionPane.showMessageDialog(null, "El ganador es: "+ player2);
+    }   
+    
+    
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        
         player1=0;
@@ -365,36 +374,40 @@ public class Principal extends javax.swing.JFrame {
            
         }
         
-        if(nombrePlayer1 != null && nombrePlayer2 != null){
-        muestraTabla1();
-        jFrame1.setVisible(true);
-    
+        if(nombrePlayer1 != null && nombrePlayer2 != null)
+        {
+            muestraTabla1();
+            jFrame1.setVisible(true);
         }
         
        if(g==null){
        
-           Thread hilo=new Thread(new Runnable() {
+           Thread hilo=new Thread(new Runnable() 
+           {
 
                @Override
-               public void run() {
-                   JFrame frame = new JFrame("Juego de Tennis");
-		g = new JuegoGrap();
-		frame.add(g);
-		frame.setSize(400, 400);
-                frame.setLocation(1199, 450);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+               public void run() 
+               {
+                    JFrame frame = new JFrame("Juego de Tennis");
+                    g = new JuegoGrap();
+                    frame.add(g);
+                    frame.setSize(400, 400);
+                    frame.setLocation(1199, 450);
+                    frame.setVisible(true);
+                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
-		while (true) {
-                       try {
+		while (true) 
+                {
+                       try 
+                       {
                            g.move();
                            g.repaint();
                            Thread.sleep(7);
-                       } catch (InterruptedException ex) {
+                       } catch (InterruptedException ex) 
+                       {
                            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
                        }
 		}
-               
                }
            });
            hilo.start();
@@ -434,16 +447,15 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
-  
-    
     int player1=0,player2=0;
     Language idioma;
-    Language2 idioma2;
     String nombrePlayer1= "1",nombrePlayer2="2";
     
     private static Principal intance;
-    public static Principal getIntance(){
-        if(Principal.intance==null){
+    public static Principal getIntance()
+    {
+        if(Principal.intance==null)
+        {
             Principal.intance=new Principal();
             return Principal.intance;
         }
@@ -451,22 +463,25 @@ public class Principal extends javax.swing.JFrame {
             return Principal.intance;
     }
     
-    public static void main(String args[]) {
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+    public static void main(String args[]) 
+    {  
+        java.awt.EventQueue.invokeLater(new Runnable() 
+        {
+            public void run() 
+            {
                Principal.getIntance().setVisible(true);//singleton
             } 
         });        
     }
     
-    public void point(int jugador){
-        switch(jugador){
+    public void point(int jugador)
+    {
+        switch(jugador)
+        {
             case 1: player1++;
                 break;
             case 2: player2++;
-                break;
-                
+                break;       
         }
     }
     public String score(){
@@ -485,35 +500,53 @@ public class Principal extends javax.swing.JFrame {
         }
         if(player1==5 || player1==4 && player2 <3){ 
             preparaReset();
+            MensajeGanador1();
             return idioma.getWin()+" "+nombrePlayer1;
-            
-      
         }
         if(player2==5 || player1<3 && player2 ==4){ 
             preparaReset();
+            MensajeGanador2();
             return idioma.getWin()+" "+nombrePlayer2;
+            
         }
         else    
             return idioma.getPuntos(player1)+" - "+idioma.getPuntos(player2);
             
     }
-   
-        void preparaReset(){
-        jButton1.setEnabled(true);
-        jButton2.setEnabled(true);
-        jButton3.setVisible(true);
+    private void MensajeGanador2()
+    {
+        JOptionPane.showMessageDialog(null, "El ganador es el jugador: "+ nombrePlayer2);
+        borrarTabla(0);
+        player1=0;
+        player2=0;
+    }
+    
+    private void MensajeGanador1()
+    {
+        JOptionPane.showMessageDialog(null, "El ganador es el jugador: "+ nombrePlayer1);
+        borrarTabla(0);
+//System.exit(0);
+        player1=0;
+        player2=0;
+        
+    }
+        void preparaReset()
+        {
+            jButton1.setEnabled(true);
+            jButton2.setEnabled(true);
+            jButton3.setVisible(true);
         }
     
-   
-        void muestraTabla1(){ 
-                jLabel6.setText(score());  
+        void muestraTabla1()
+        { 
+            jLabel6.setText(score());  
 
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        modelo.addRow(new Object[]{player1,player2,score()});
-       
-    }
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            modelo.addRow(new Object[]{player1,player2,score()});
+        }
         
-    void borrarTabla(int row){
+    void borrarTabla(int row)
+    {
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         while (row < modelo.getRowCount()){
             modelo.removeRow(row);

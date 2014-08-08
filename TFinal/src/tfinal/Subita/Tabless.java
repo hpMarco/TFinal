@@ -14,44 +14,45 @@ public class Tabless extends javax.swing.JFrame {
     
     int player1=0,player2=0;
     Language idioma;
-    Language2 idioma2;
     String nombrePlayer1= "1",nombrePlayer2="2";
 
-   
-    public Tabless() {
+    public Tabless() 
+    {
         initComponents();
         jFrame1.setVisible(true);
     }
     
-    void imprimirTabla(){
-       
-        
+    void imprimirTabla()
+    {
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        modelo.addRow(new Object[]{player1,player2,score()});
-        
-        
+        modelo.addRow(new Object[]{player1,player2,score()});   
     }
-    public String score(){
-        if(player1<3 && player1==player2){
+    public String score()
+    {
+        if(player1<3 && player1==player2)
+        {
             return idioma.getPuntos(player1)+" - "+idioma.getAll();
         }
-        if(player1>2 && player1==player2){ 
+        if(player1>2 && player1==player2)
+        { 
             player1=3;player2=3;
             return idioma.getDeuce();
         }
-        if(player1==4 && player2 == 3){
+        if(player1==4 && player2 == 3)
+        {
             return idioma.getAdvantage()+" "+nombrePlayer1;
         }
-        if(player1==3 && player2 == 4){
+        if(player1==3 && player2 == 4)
+        {
             return idioma.getAdvantage()+" "+nombrePlayer2;
         }
-        if(player1==5 || player1==4 && player2 <3){ 
+        if(player1==5 || player1==4 && player2 <3)
+        { 
             preparaReset();
             return idioma.getWin()+" "+nombrePlayer1;
-            
-      
         }
-        if(player2==5 || player1<3 && player2 ==4){ 
+        if(player2==5 || player1<3 && player2 ==4)
+        { 
             preparaReset();
             return idioma.getWin()+" "+nombrePlayer2;
         }
@@ -60,9 +61,10 @@ public class Tabless extends javax.swing.JFrame {
             
     }
     
-     void preparaReset(){
+     void preparaReset()
+     {
        
-        }
+     }
 
   
     @SuppressWarnings("unchecked")
@@ -150,15 +152,13 @@ public class Tabless extends javax.swing.JFrame {
             case 2: idioma = new Frances();
                 break;
             case 3: idioma = new Aleman();
-                break;
-            
+                break;  
         }
         
-        if(nombrePlayer1 != null && nombrePlayer2 != null){
-        imprimirTabla();
-          jFrame1.setVisible(true);
-        
-      
+        if(nombrePlayer1 != null && nombrePlayer2 != null)
+        {
+            imprimirTabla();
+            jFrame1.setVisible(true);
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 

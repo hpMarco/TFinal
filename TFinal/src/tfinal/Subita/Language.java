@@ -5,7 +5,8 @@ package tfinal.Subita;
  *
  * @author Lobo
  */
-public interface Language {
+public interface Language 
+{
     String getPuntos(int points);
     String getDeuce();
     String getAll();

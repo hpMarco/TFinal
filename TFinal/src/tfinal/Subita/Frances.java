@@ -5,22 +5,28 @@ package tfinal.Subita;
  *
  * @author Lobo
  */
-public class Frances implements Language,Language2 {
+public class Frances implements Language
+{
     
-    public String getPuntos(int points){
+    public String getPuntos(int points)
+    {
         String[] words={"ZERO","QUINZE","TRENTE","QUARANTE"};
         return words[points];
     }
-    public String getDeuce(){
+    public String getDeuce()
+    {
         return "ATTACHER";
     }
-    public String getAll(){
+    public String getAll()
+    {
         return "À";
     }
-    public String getAdvantage(){
+    public String getAdvantage()
+    {
         return "AVANTAGE JOUEUR ";
     }
-    public String getWin(){
+    public String getWin()
+    {
         return "GAGNE JOUEUR ";
     }
 }
